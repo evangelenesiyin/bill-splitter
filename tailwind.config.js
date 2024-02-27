@@ -5,10 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        trirong: "Trirong_400Regular",
-      },
-      fontSize: {
-        title: "96px",
+        trirong: ["Trirong_400Regular"],
+        trispace: ["Trispace_100Thin"],
+        robotocondensed: ["RobotoCondensed_400Regular"],
       },
       colors: {
         gray: "#F4F4F4",

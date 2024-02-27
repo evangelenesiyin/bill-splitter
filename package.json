@@ -9,9 +9,11 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/roboto": "^0.2.3",
+    "@expo-google-fonts/roboto-condensed": "^0.2.3",
     "@expo-google-fonts/trirong": "^0.2.3",
+    "@expo-google-fonts/trispace": "^0.2.3",
     "expo": "~50.0.7",
-    "expo-splash-screen": "^0.26.4",
     "expo-status-bar": "~1.11.1",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
