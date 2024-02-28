@@ -14,6 +14,7 @@
     "@expo-google-fonts/trirong": "^0.2.3",
     "@expo-google-fonts/trispace": "^0.2.3",
     "@react-navigation/native": "^6.1.12",
+    "@react-navigation/native-stack": "^6.9.20",
     "expo": "~50.0.7",
     "expo-status-bar": "~1.11.1",
     "lottie-react-native": "6.5.1",
