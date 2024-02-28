@@ -13,12 +13,13 @@
     "@expo-google-fonts/roboto-condensed": "^0.2.3",
     "@expo-google-fonts/trirong": "^0.2.3",
     "@expo-google-fonts/trispace": "^0.2.3",
+    "@react-navigation/native": "^6.1.12",
     "expo": "~50.0.7",
     "expo-status-bar": "~1.11.1",
+    "lottie-react-native": "6.5.1",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
-    "react-native": "0.73.4",
-    "lottie-react-native": "6.5.1"
+    "react-native": "0.73.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
