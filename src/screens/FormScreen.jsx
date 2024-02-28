@@ -1,13 +1,19 @@
-import { Text, View, SafeAreaView } from "react-native";
+import { View, SafeAreaView } from "react-native";
+import Header from "../components/Header";
+import FormPeople from "../components/FormPeople";
+import FormReceipt from "../components/FormReceipt";
 
 export default function FormScreen() {
   return (
-    <SafeAreaView
-      style={{ width: "100%", height: "100%", backgroundColor: "#F4F4F4" }}
-    >
-      <View>
-        <Text>This is a form page!!</Text>
+      <>
+      <View className="flex-row items-center justify-center">
+        <Header />
       </View>
-    </SafeAreaView>
+      <SafeAreaView className="bg-gray">
+        <FormPeople />
+        <View style={{ width: "90%", height: 1, backgroundColor: "#939393", marginTop: 20, marginBottom: 20 }}></View>
+        <FormReceipt />
+        </SafeAreaView>
+      </>
   );
 }
