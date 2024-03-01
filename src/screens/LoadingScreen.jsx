@@ -19,46 +19,24 @@ export default function LoadingScreen() {
   }
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#F4F4F4",
-        width: "100%",
-      }}
-    >
-      <View style={{ alignItems: "center" }}>
-        <Text
-          style={{
-            fontFamily: "Trirong_400Regular",
-            fontSize: 90,
-            color: "#112240",
-          }}
-        >
+    <SafeAreaView className="flex-1 justify-center items-center bg-gray w-full">
+      <View className="items-center">
+        <Text className="text-darknavy text-title font-trirong">
           BI
-          <Text style={{ fontFamily: "Trispace_100Thin", fontSize: 110 }}>
+          <Text className="text-titleslash font-trispace">
             /
           </Text>
           LL
         </Text>
-        <Text
-          style={{
-            fontFamily: "RobotoCondensed_400Regular",
-            fontSize: 20,
-            marginBottom: 5,
-          }}
-        >
+        <Text className="font-robotocondensed text-xl">
           Dining in a large group?
         </Text>
-        <Text
-          style={{ fontFamily: "RobotoCondensed_400Regular", fontSize: 20 }}
-        >
+        <Text className="font-robotocondensed text-xl">
           Split your bills with ease.
         </Text>
         <LottieView
           source={require("../assets/lottie/loading.json")}
-          style={{ width: 200, height: 100 }}
+          className="w-52 h-28"
           autoPlay
           loop
         />

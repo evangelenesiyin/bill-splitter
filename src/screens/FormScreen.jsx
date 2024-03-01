@@ -9,9 +9,11 @@ export default function FormScreen() {
       <View className="flex-row items-center justify-center">
         <Header />
       </View>
-      <SafeAreaView className="bg-gray">
+      <SafeAreaView className="bg-gray h-full">
         <FormPeople />
-        <View style={{ width: "90%", height: 1, backgroundColor: "#939393", marginTop: 20, marginBottom: 20 }}></View>
+        <View className="flex-row items-center justify-center">
+        <View className="w-10/12 h-px bg-midgray my-4"></View>
+        </View>
         <FormReceipt />
         </SafeAreaView>
       </>
