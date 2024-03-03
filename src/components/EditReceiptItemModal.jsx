@@ -1,31 +1,31 @@
 import { useEffect, useState } from "react";
+import { useAtomValue, useAtom } from "jotai";
 import { Button, Modal, Pressable, Text, TextInput, View } from "react-native";
+import { indexToEditAtom, receiptItemsAtom, sharersAtom } from "../utils/atom";
+import { receiptItemTemplate } from "../data/template";
 
 export default function EditReceiptItemModal({
-  sharers,
   existingReceiptItem,
-  EditReceiptItemModalVisible,
+  editReceiptItemModalVisible,
   setEditReceiptItemModalVisible,
 }) {
-  const [receiptItem, setReceiptItem] = useState({
-    item_name: existingReceiptItem?.item_name || "", // string
-    item_price: existingReceiptItem?.item_price || 0.0, // float
-    item_sharers: existingReceiptItem?.item_sharers || [], // array of string names
-  });
-
+  const [receiptItem, setReceiptItem] = useState({});
+  const indexToEdit = useAtomValue(indexToEditAtom);
+  const sharers = useAtomValue(sharersAtom);
+  const [receipt, setReceipt] = useAtom(receiptItemsAtom);
   const [isComplete, setIsComplete] = useState(false);
 
   const handleChangeItemName = (text) => {
     setReceiptItem({
       ...receiptItem,
-      item_name: text.trim(),
+      item_name: text,
     });
   };
 
   const handleChangeItemPrice = (value) => {
     setReceiptItem({
       ...receiptItem,
-      item_price: value,
+      item_price: value.trim(),
     });
   };
 
@@ -48,13 +48,17 @@ export default function EditReceiptItemModal({
   const handleSubmit = () => {
     // different functions depending on whether it's new or an edit
     // for now only new
+    setReceipt([...receipt, receiptItem]);
+    setReceiptItem({
+      ...receiptItemTemplate,
+    });
   };
 
   useEffect(() => {
     if (
-      receiptItem.item_name.length == 0 ||
+      receiptItem.item_name?.length == 0 ||
       receiptItem.item_price <= 0 ||
-      receiptItem.item_sharers.length < 0
+      receiptItem.item_sharers?.length == 0
     ) {
       setIsComplete(false);
     } else {
@@ -62,9 +66,21 @@ export default function EditReceiptItemModal({
     }
   }, [receiptItem]);
 
+  useEffect(() => {
+    if (indexToEdit == -1) {
+      setReceiptItem({
+        ...receiptItemTemplate,
+      });
+    } else {
+      setReceiptItem({
+        ...receipt[indexToEdit],
+      });
+    }
+  }, [editReceiptItemModalVisible]);
+
   return (
     <Modal
-      visible={EditReceiptItemModalVisible}
+      visible={editReceiptItemModalVisible}
       onRequestClose={() => setEditReceiptItemModalVisible(false)}
     >
       <View>
@@ -99,13 +115,13 @@ export default function EditReceiptItemModal({
             onPressOut={() => handleAddRemoveSharer(sharer)}
           >
             <Text>
-              {sharer} {receiptItem.item_sharers.includes(sharer) && "o"}
+              {sharer} {receiptItem.item_sharers?.includes(sharer) && "o"}
             </Text>
           </Pressable>
         );
       })}
 
-      <Button title="ADD" disabled={!isComplete} />
+      <Button title="ADD" disabled={!isComplete} onPress={handleSubmit} />
     </Modal>
   );
 }
