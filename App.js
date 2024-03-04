@@ -8,7 +8,7 @@ export default function App() {
   useEffect(() => {
     setTimeout(() => {
       setChangeScreen(true);
-    }, 5000);
+    }, 3000);
   }, []);
 
   return changeScreen ? <FormScreen /> : <LoadingScreen />;
