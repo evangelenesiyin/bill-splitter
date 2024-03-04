@@ -3,6 +3,8 @@ import { useFonts, Roboto_400Regular } from "@expo-google-fonts/roboto";
 import { Trirong_400Regular } from "@expo-google-fonts/trirong";
 import { Trispace_100Thin } from "@expo-google-fonts/trispace";
 import { RobotoCondensed_400Regular } from "@expo-google-fonts/roboto-condensed";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera'
 
 export default function Header() {
 
@@ -18,10 +20,9 @@ export default function Header() {
     }
 
     return (
-        <SafeAreaView
-        style={{ flex: 1, backgroundColor: "#F4F4F4", alignItems: "center" }}
-        >
-        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: "100%", paddingHorizontal: 30 }}>
+        <SafeAreaView className="flex-1 bg-gray items-center">
+        <View className="flex-row justify-between items-center w-full px-30" style={{ paddingHorizontal: 30 }}>
+            {/* <FontAwesomeIcon icon={ faCamera } /> */}
             <Text className="text-xl text-darkgray">Cam</Text>
             <Text
                 style={{
@@ -36,7 +37,7 @@ export default function Header() {
                 </Text>
                 LL
             </Text>
-            <Text className="text-xl text-darkgray" style={{ fontFamily: "Roboto_400Regular" }}>Reset</Text>
+            <Text className="text-xl text-darkgray font-roboto">Reset</Text>
         </View>
         </SafeAreaView>
     );
