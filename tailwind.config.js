@@ -7,7 +7,10 @@ module.exports = {
       fontFamily: {
         trirong: ["Trirong_400Regular"],
         trispace: ["Trispace_100Thin"],
-        roboto: ["Roboto"],
+        robotothin: ["Roboto_100Thin"],
+        roboto: ["Roboto_400Regular"],
+        robotomedium: ["Roboto_500Medium"],
+        robotobold: ["Roboto_700Bold"],
         robotocondensed: ["RobotoCondensed_400Regular"],
       },
       colors: {
