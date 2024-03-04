@@ -18,13 +18,14 @@
     "@fortawesome/react-native-fontawesome": "^0.3.0",
     "@react-navigation/native": "^6.1.12",
     "@react-navigation/native-stack": "^6.9.20",
-    "expo": "~50.0.7",
+    "expo": "^49.0.23",
     "expo-status-bar": "~1.11.1",
     "jotai": "^2.7.0",
     "lottie-react-native": "6.5.1",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
-    "react-native": "0.73.4"
+    "react-native": "0.73.4",
+    "react-native-popup-dialog": "^0.18.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
