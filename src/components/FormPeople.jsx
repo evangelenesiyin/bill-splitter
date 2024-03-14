@@ -2,8 +2,11 @@ import { Text, View } from "react-native";
 import { useFonts, Roboto_400Regular } from "@expo-google-fonts/roboto";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
+import { useAtom } from "jotai";
+import { sharersAtom } from "../utils/atom";
 
 export default function FormPeople() {
+    const [sharers, setSharers] = useAtom(sharersAtom)
 
     let [fontsLoaded] = useFonts({
     Roboto_400Regular,

@@ -32,4 +32,6 @@ export const receiptItemsAtom = atom([
   },
 ]);
 
+export const summaryAtom = atom([]);
+
 
