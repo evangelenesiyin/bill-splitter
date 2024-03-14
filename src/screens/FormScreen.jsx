@@ -7,7 +7,7 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { sharersAtom, receiptItemsAtom, summaryAtom } from "../utils/atom";
 import getIndividualPrices from "../utils/calculations";
 
-export default function FormScreen() {
+export default function FormScreen({ navigation }) {
   const sharers = useAtomValue(sharersAtom);
   const receiptItems = useAtomValue(receiptItemsAtom);
   const setSummary = useSetAtom(summaryAtom);
@@ -15,8 +15,8 @@ export default function FormScreen() {
 
   const handleSummaryPress = () => {
     setSummary(getIndividualPrices(sharers, receiptItems, grandTotal));
-    // console.log(getIndividualPrices(sharers, receiptItems, grandTotal));
-    // probably need to route to summary page after
+    console.log(getIndividualPrices(sharers, receiptItems, grandTotal));
+    navigation.navigate('Summary')
   };
 
   return (
@@ -30,7 +30,7 @@ export default function FormScreen() {
           <View className="w-10/12 h-px bg-midgray my-4"></View>
         </View>
         <FormReceipt />
-        <Button title="Summary" onPress={handleSummaryPress} />
+        <Button title="VIEW SUMMARY" onPress={handleSummaryPress} />
       </SafeAreaView>
     </>
   );
