@@ -19,8 +19,8 @@ export default function Summary() {
       </View>
 
       {/* this will be each person's breakdown */}
-      {summary?.map((summaryItem) => {
-        return <SummaryBreakdown summaryItem={summaryItem} />;
+      {summary?.map((summaryItem, idx) => {
+        return <SummaryBreakdown key={idx} summaryItem={summaryItem} />;
       })}
 
       {/* and this is button */}

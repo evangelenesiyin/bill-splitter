@@ -10,9 +10,10 @@ export default function EditReceiptItemModal({
   setEditReceiptItemModalVisible,
 }) {
   const [receiptItem, setReceiptItem] = useState({});
-  const indexToEdit = useAtomValue(indexToEditAtom);
+  const [indexToEdit, setIndexToEdit] = useAtom(indexToEditAtom);
   const sharers = useAtomValue(sharersAtom);
   const [receipt, setReceipt] = useAtom(receiptItemsAtom);
+  const [isNew, setIsNew] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
 
   const handleChangeItemName = (text) => {
@@ -45,13 +46,30 @@ export default function EditReceiptItemModal({
     }
   };
 
-  const handleSubmit = () => {
-    // different functions depending on whether it's new or an edit
-    // for now only new
+  const handleAdd = () => {
     setReceipt([...receipt, receiptItem]);
     setReceiptItem({
       ...receiptItemTemplate,
     });
+  };
+
+  const handleEdit = () => {
+    const currentArray = [...receipt];
+    currentArray[indexToEdit] = receiptItem;
+    setReceipt(currentArray);
+    handleCloseModal();
+  };
+
+  const handleDelete = () => {
+    const currentArray = [...receipt];
+    currentArray.splice(indexToEdit, 1);
+    setReceipt(currentArray);
+    handleCloseModal();
+  };
+
+  const handleCloseModal = () => {
+    setIndexToEdit(-1);
+    setEditReceiptItemModalVisible(false);
   };
 
   useEffect(() => {
@@ -68,10 +86,12 @@ export default function EditReceiptItemModal({
 
   useEffect(() => {
     if (indexToEdit == -1) {
+      setIsNew(true);
       setReceiptItem({
         ...receiptItemTemplate,
       });
     } else {
+      setIsNew(false);
       setReceiptItem({
         ...receipt[indexToEdit],
       });
@@ -81,16 +101,14 @@ export default function EditReceiptItemModal({
   return (
     <Modal
       visible={editReceiptItemModalVisible}
-      onRequestClose={() => setEditReceiptItemModalVisible(false)}
+      onRequestClose={handleCloseModal}
     >
       <View>
-        <Text>Enter Details</Text>
-        <Pressable onPressOut={() => setEditReceiptItemModalVisible(false)}>
+        {isNew ? <Text>Enter Details</Text> : <Text>Edit details</Text>}
+        <Pressable onPressOut={handleCloseModal}>
           <Text>x</Text>
         </Pressable>
       </View>
-
-      <Text>{JSON.stringify(receiptItem)}</Text>
 
       <Text>Description (optional)</Text>
       <TextInput
@@ -120,8 +138,14 @@ export default function EditReceiptItemModal({
           </Pressable>
         );
       })}
-
-      <Button title="ADD" disabled={!isComplete} onPress={handleSubmit} />
+      {isNew ? (
+        <Button title="ADD" disabled={!isComplete} onPress={handleAdd} />
+      ) : (
+        <View>
+          <Button title="SAVE" disabled={!isComplete} onPress={handleEdit} />
+          <Button title="DELETE" onPress={handleDelete} />
+        </View>
+      )}
     </Modal>
   );
 }
