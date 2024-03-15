@@ -1,4 +1,4 @@
-import { View, SafeAreaView, Button } from "react-native";
+import { View, SafeAreaView, Button, Pressable } from "react-native";
 import Header from "../components/Header";
 import FormPeople from "../components/FormPeople";
 import FormReceipt from "../components/FormReceipt";
@@ -6,8 +6,11 @@ import { useState } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
 import { sharersAtom, receiptItemsAtom, summaryAtom } from "../utils/atom";
 import getIndividualPrices from "../utils/calculations";
+import EditFormPeopleModal from "../components/EditFormPeopleModal";
 
 export default function FormScreen({ navigation }) {
+  const [editFormPeopleModalVisible, setEditFormPeopleModalVisible] =
+    useState(false);
   const sharers = useAtomValue(sharersAtom);
   const receiptItems = useAtomValue(receiptItemsAtom);
   const setSummary = useSetAtom(summaryAtom);
@@ -16,7 +19,7 @@ export default function FormScreen({ navigation }) {
   const handleSummaryPress = () => {
     setSummary(getIndividualPrices(sharers, receiptItems, grandTotal));
     console.log(getIndividualPrices(sharers, receiptItems, grandTotal));
-    navigation.navigate('Summary')
+    navigation.navigate("Summary");
   };
 
   return (
@@ -25,13 +28,16 @@ export default function FormScreen({ navigation }) {
         <Header />
       </View>
       <SafeAreaView className="bg-gray h-full">
-        <FormPeople />
+        <Pressable onPress={()=> setEditFormPeopleModalVisible(true)}>
+          <FormPeople />
+        </Pressable>
         <View className="flex-row items-center justify-center">
           <View className="w-10/12 h-px bg-midgray my-4"></View>
         </View>
         <FormReceipt />
         <Button title="VIEW SUMMARY" onPress={handleSummaryPress} />
       </SafeAreaView>
+      <EditFormPeopleModal editFormPeopleModalVisible={editFormPeopleModalVisible} setEditFormPeopleModalVisible={setEditFormPeopleModalVisible} />
     </>
   );
 }
