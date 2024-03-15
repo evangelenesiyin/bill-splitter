@@ -5,7 +5,6 @@ import { indexToEditAtom, receiptItemsAtom, sharersAtom } from "../utils/atom";
 import { receiptItemTemplate } from "../data/template";
 
 export default function EditReceiptItemModal({
-  existingReceiptItem,
   editReceiptItemModalVisible,
   setEditReceiptItemModalVisible,
 }) {
