@@ -12,8 +12,7 @@ import {
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons/faCircleInfo";
+import { faPlus, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import Dialog, { DialogContent } from "react-native-popup-dialog";
 
 export default function FormReceipt() {
@@ -39,27 +38,13 @@ export default function FormReceipt() {
         <Text className="font-roboto text-xl text-darknavy">
           Bill breakdown
         </Text>
-        <View className="flex flex-1 items-end mr-8 justify-center">
-          <Pressable onPress={() => setEditReceiptItemModalVisible(true)}>
-            <FontAwesomeIcon icon={faPlus} />
-          </Pressable>
-        </View>
-      </View>
-      <View className="ml-8 mt-2">
-        {receipt && receipt.length > 0 ? (
-          <>
-            <View className="flex flex-row mt-2">
-              <Text className="font-robotomedium text-base text-darkgray pr-2">
-                Description
-              </Text>
-
-              <Pressable
+        <Pressable
                 onPress={() => setDialogVisible(true)}
                 accessibilityLabel="Open Dialog"
               >
                 <FontAwesomeIcon
                   icon={faCircleInfo}
-                  style={{ color: "#595C6C", marginTop: 3 }}
+                  style={{ color: "#595C6C", marginTop: 6, marginLeft: 5 }}
                 />
               </Pressable>
 
@@ -78,12 +63,28 @@ export default function FormReceipt() {
                   </Pressable>
                 </DialogContent>
               </Dialog>
+        <View className="flex flex-1 items-end mr-8 justify-center">
+          <Pressable onPress={() => setEditReceiptItemModalVisible(true)}>
+            <FontAwesomeIcon icon={faPlus} />
+          </Pressable>
+          
+        </View>
+      </View>
+      <View className="ml-8 mt-2">
+        {receipt && receipt.length > 0 ? (
+          <>
+            <View className="flex flex-row mt-2">
+              <Text className="font-robotomedium text-base text-darkgray pr-2">
+                Description
+              </Text>
+
               <View className="flex flex-1 items-end mr-8">
                 <Text className="font-robotomedium text-base text-darkgray">
                   Amount
                 </Text>
               </View>
-            </View>
+              </View>
+            
             <View className="w-11/12 h-px bg-midgray my-2"></View>
             {receipt.map((receiptItem, index) => (
               <FormReceiptItem
