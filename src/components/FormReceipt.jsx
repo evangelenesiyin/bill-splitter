@@ -39,35 +39,34 @@ export default function FormReceipt() {
           Bill breakdown
         </Text>
         <Pressable
-                onPress={() => setDialogVisible(true)}
-                accessibilityLabel="Open Dialog"
-              >
-                <FontAwesomeIcon
-                  icon={faCircleInfo}
-                  style={{ color: "#595C6C", marginTop: 6, marginLeft: 5 }}
-                />
-              </Pressable>
+          onPress={() => setDialogVisible(true)}
+          accessibilityLabel="Open Dialog"
+        >
+          <FontAwesomeIcon
+            icon={faCircleInfo}
+            style={{ color: "#595C6C", marginTop: 6, marginLeft: 5 }}
+          />
+        </Pressable>
 
-              <Dialog
-                visible={dialogVisible}
-                onTouchOutside={() => setDialogVisible(false)}
-              >
-                <DialogContent className="bg-beige">
-                  <Text className="font-robotomedium pt-7 pb-2 px-3 text-base">
-                    Tap on individual item to edit/delete
-                  </Text>
-                  <Pressable onPress={() => setDialogVisible(false)}>
-                    <Text className="font-robotocondensed py-2 px-3 mt-2 mx-14 text-base text-center bg-darknavy text-beige rounded-full">
-                      CLOSE
-                    </Text>
-                  </Pressable>
-                </DialogContent>
-              </Dialog>
+        <Dialog
+          visible={dialogVisible}
+          onTouchOutside={() => setDialogVisible(false)}
+        >
+          <DialogContent className="bg-beige">
+            <Text className="font-robotomedium pt-7 pb-2 px-3 text-base">
+              Tap on individual item to edit/delete
+            </Text>
+            <Pressable onPress={() => setDialogVisible(false)}>
+              <Text className="font-robotocondensed py-2 px-3 mt-2 mx-14 text-base text-center bg-darknavy text-beige rounded-full">
+                CLOSE
+              </Text>
+            </Pressable>
+          </DialogContent>
+        </Dialog>
         <View className="flex flex-1 items-end mr-8 justify-center">
           <Pressable onPress={() => setEditReceiptItemModalVisible(true)}>
             <FontAwesomeIcon icon={faPlus} />
           </Pressable>
-          
         </View>
       </View>
       <View className="ml-8 mt-2">
@@ -83,8 +82,8 @@ export default function FormReceipt() {
                   Amount
                 </Text>
               </View>
-              </View>
-            
+            </View>
+
             <View className="w-11/12 h-px bg-midgray my-2"></View>
             {receipt.map((receiptItem, index) => (
               <FormReceiptItem
@@ -96,7 +95,9 @@ export default function FormReceipt() {
             ))}
           </>
         ) : (
-          <Text className="text-midgray">No details added</Text>
+          <Pressable onPress={() => setEditReceiptItemModalVisible(true)}>
+            <Text className="text-midgray">No details added</Text>
+          </Pressable>
         )}
         <Text>This is the grandtotal text</Text>
       </View>
