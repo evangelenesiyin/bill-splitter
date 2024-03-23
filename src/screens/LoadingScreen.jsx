@@ -32,12 +32,14 @@ export default function LoadingScreen() {
           <Text className="font-robotocondensed text-xl">
             Split your bills with ease.
           </Text>
+          <View className="justify-center align-middle">
           <LottieView
             source={require("../assets/lottie/loading.json")}
             className="w-52 h-28"
             autoPlay
             loop
           />
+          </View>
         </View>
         <StatusBar style="auto" />
     </SafeAreaView>
