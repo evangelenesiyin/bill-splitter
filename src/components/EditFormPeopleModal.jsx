@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, Pressable } from "react-native";
+import { Text, Pressable, View } from "react-native";
 import { useAtom } from "jotai";
 import { sharersAtom } from "../utils/atom";
 import Dialog, { DialogContent } from "react-native-popup-dialog";
@@ -11,6 +11,8 @@ import {
   Roboto_500Medium,
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
+import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 export default function EditPeopleModal({ dialogVisible, setDialogVisible }) {
   const [sharers, setSharers] = useAtom(sharersAtom);
@@ -54,7 +56,10 @@ export default function EditPeopleModal({ dialogVisible, setDialogVisible }) {
       onTouchOutside={() => setDialogVisible(false)}
     >
       <DialogContent className="bg-beige w-80">
-        <Text className="font-robotomedium pt-7 pb-2 px-3 text-base">
+        <View className="flex-row items-center justify-end mt-3">
+        <FontAwesomeIcon icon={faXmark} />
+        </View>
+        <Text className="font-robotomedium mb-3 mx-2 text-base">
           Separate each name with a space
         </Text>
         <TagInput
@@ -69,14 +74,12 @@ export default function EditPeopleModal({ dialogVisible, setDialogVisible }) {
             borderWidth: 1,
             borderColor: "gray",
             borderRadius: 8,
-            marginRight: 5,
           }}
-          inputContainerStyle={{ backgroundColor: "#F4F4F4" }}
-          tagColor="#F4F4F4"
-          tagTextColor="#161A30"
         />
         <Pressable onPress={handleSave} className="mt-5">
-          <Text className="font-robotocondensed py-2 px-3 mx-14 text-xl text-center bg-darknavy text-beige rounded-full">
+          <Text className="font-robotocondensed py-1 px-3 mx-14 text-lg text-center bg-darknavy text-beige rounded-full"
+          style={{ borderRadius: 15, overflow: 'hidden' }}
+          >
             SAVE
           </Text>
         </Pressable>
