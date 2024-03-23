@@ -56,9 +56,9 @@ export default function EditPeopleModal({ dialogVisible, setDialogVisible }) {
       onTouchOutside={() => setDialogVisible(false)}
     >
       <DialogContent className="bg-beige w-80">
-        <View className="flex-row items-center justify-end mt-3">
+        <Pressable className="flex-row items-center justify-end mt-3" onPress={() => setDialogVisible(false)}>
         <FontAwesomeIcon icon={faXmark} />
-        </View>
+        </Pressable>
         <Text className="font-robotomedium mb-3 mx-2 text-base">
           Separate each name with a space
         </Text>
