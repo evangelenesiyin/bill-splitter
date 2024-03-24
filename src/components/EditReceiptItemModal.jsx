@@ -123,7 +123,7 @@ export default function EditReceiptItemModal({
         className="bg-gray border border-midgray rounded mb-2 mx-1 py-2 px-3"
       />
 
-      <Text className="font-roboto pb-2 px-1 text-sm">Total item amount (SGD)</Text>
+      <Text className="font-roboto pb-2 px-1 text-sm">Total item amount</Text>
       <TextInput
         value={String(receiptItem.item_price)}
         onChangeText={(text) => handleChangeItemPrice(text)}
@@ -142,14 +142,23 @@ export default function EditReceiptItemModal({
         const isSelected = receiptItem.item_sharers?.includes(sharer);
         return (
           <Pressable
-            key={index}
-            onPressOut={() => handleAddRemoveSharer(sharer)}
-            className={`border rounded-full py-1 px-3 m-0.5 ${
-              isSelected ? 'border-darknavy bg-darknavy text-beige' : 'border-midgray bg-gray'
-            }`}
-          >
-            <Text className="text-center">{sharer}</Text>
-          </Pressable>
+          key={index}
+          onPressOut={() => handleAddRemoveSharer(sharer)}
+          style={{
+            borderWidth: 1,
+            borderRadius: 999,
+            borderColor: isSelected ? '#161A30' : '#939393',
+            paddingVertical: 5,
+            paddingHorizontal: 15,
+            margin: 5,
+            backgroundColor: isSelected ? '#161A30' : '#F0ECE5',
+          }}
+        >
+          <Text style={{ color: isSelected ? '#F0ECE5' : '#161A30', textAlign: 'center' }}>
+            {sharer}
+          </Text>
+        </Pressable>
+
         );
       })}
     </View>
