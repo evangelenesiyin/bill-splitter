@@ -34,7 +34,7 @@ export default function FormReceiptItem({
 
   return (
     <Pressable onPress={handleReceiptItemPress}>
-      <View className="flex flex-row">
+      <View className="flex flex-row mt-1">
         <Text className="font-roboto text-base text-darkgray">
           {receiptItem.item_name}
         </Text>
@@ -44,7 +44,7 @@ export default function FormReceiptItem({
           </Text>
         </View>
       </View>
-      <Text className="font-roboto text-base text-midgray mb-4">
+      <Text className="font-roboto text-base text-midgray mb-2">
         {receiptItem.item_sharers.join(", ")}
       </Text>
     </Pressable>
