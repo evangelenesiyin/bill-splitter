@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAtom } from "jotai";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, TextInput, View } from "react-native";
 import EditReceiptItemModal from "./EditReceiptItemModal";
 import FormReceiptItem from "./FormReceiptItem";
 import { receiptItemsAtom } from "../utils/atom";
@@ -84,7 +84,11 @@ export default function FormReceipt() {
               </View>
             </View>
 
-            <View className="w-11/12 h-px bg-midgray my-2"></View>
+            <View style={{ flexDirection: 'row', marginTop: 5, marginBottom: 5 }}>
+            {[...Array(58)].map((_, index) => (
+              <View key={index} style={{ width: 4, height: 1, backgroundColor: 'gray', marginHorizontal: 1 }} />
+            ))}
+          </View>
             {receipt.map((receiptItem, index) => (
               <FormReceiptItem
                 key={index}
@@ -93,13 +97,23 @@ export default function FormReceipt() {
                 setEditReceiptItemModalVisible={setEditReceiptItemModalVisible}
               />
             ))}
+          <View style={{ flexDirection: 'row' }}>
+          {[...Array(58)].map((_, index) => (
+            <View key={index} style={{ width: 4, height: 1, backgroundColor: 'gray', marginHorizontal: 1 }} />
+          ))}
+        </View>
+        <View className="flex flex-row justify-between items-center">
+        <Text className="font-robotomedium text-base text-darkgray mt-2">Grand Total</Text>
+        <Text className="font-robotomedium text-base text-darkgray mr-8">$100.00</Text>
+          {/* <TextInput className="bg-gray border border-midgray rounded py-2 px-2 w-20"/> */}
+        </View>
+            
           </>
         ) : (
           <Pressable onPress={() => setEditReceiptItemModalVisible(true)}>
             <Text className="text-midgray">No details added</Text>
           </Pressable>
         )}
-        <Text>This is the grandtotal text</Text>
       </View>
       <EditReceiptItemModal
         editReceiptItemModalVisible={editReceiptItemModalVisible}
