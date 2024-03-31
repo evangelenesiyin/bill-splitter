@@ -57,7 +57,7 @@ export default function FormReceipt() {
               Tap on individual bill item to edit/delete
             </Text>
             <Pressable onPress={() => setDialogVisible(false)}>
-              <Text className="font-robotocondensed py-2 px-3 mt-2 mx-14 text-2xl text-center bg-darknavy text-beige" style={{ borderRadius: 20, overflow: 'hidden' }}>
+              <Text className="font-robotocondensed py-2 px-3 mx-20 text-2xl text-center bg-darknavy text-beige" style={{ borderRadius: 20, overflow: 'hidden' }}>
                 CLOSE
               </Text>
             </Pressable>
