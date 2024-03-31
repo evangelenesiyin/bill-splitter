@@ -26,11 +26,11 @@ export default function FormPeople() {
         accessibilityLabel="Open Dialog"
       >
         <View className="flex flex-row ml-8">
-          <Text className="font-roboto text-xl text-darknavy">
+          <Text className="font-roboto text-2xl text-darknavy">
             Who's sharing?
           </Text>
           <View className="flex flex-1 items-end mr-8 justify-center">
-            <FontAwesomeIcon icon={faPlus} />
+            <FontAwesomeIcon icon={faPlus} size="20x" />
 
             <EditFormPeopleModal
               dialogVisible={dialogVisible}
@@ -40,9 +40,9 @@ export default function FormPeople() {
         </View>
         <View className="ml-8 mt-2">
           {sharers.length ? (
-            <Text>{sharers.join(", ")}</Text>
+            <Text className="text-lg">{sharers.join(", ")}</Text>
           ) : (
-            <Text className="text-midgray">No names added</Text>
+            <Text className="text-midgray text-lg">No names added</Text>
           )}
         </View>
       </Pressable>

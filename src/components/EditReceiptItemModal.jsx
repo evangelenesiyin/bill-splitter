@@ -106,37 +106,40 @@ export default function EditReceiptItemModal({
       onRequestClose={handleCloseModal}
       onTouchOutside={handleCloseModal}
     >
-      <DialogContent className="bg-beige w-80">
+      <DialogContent className="bg-beige w-85 h-auto">
     <View className="flex-row items-center justify-between">
-      <Text className="font-robotomedium pt-5 pb-2 px-1 text-base">
+      <Text className="font-robotomedium mt-6 mb-2 mx-1 text-xl">
         {isNew ? "Enter details" : "Edit details"}
       </Text>
-      <Pressable onPressOut={handleCloseModal}>
-        <FontAwesomeIcon icon={faXmark} />
+      <Pressable className="mt-2" onPressOut={handleCloseModal}>
+        <FontAwesomeIcon icon={faXmark} size="20x" />
       </Pressable>
     </View>
 
-      <Text className="font-roboto pb-2 px-1 text-sm">Description (optional)</Text>
+      <Text className="font-robotomedium mb-2 mx-1 text-lg">Description (optional)</Text>
       <TextInput
         value={receiptItem.item_name}
         onChangeText={(text) => handleChangeItemName(text)}
-        className="bg-gray border border-midgray rounded mb-2 mx-1 py-2 px-3"
+        maxLength={28}
+        placeholder="Pepperoni Pizza"
+        className="bg-gray border border-midgray rounded mb-2 mx-1 py-3 px-3 text-xl h-15"
       />
 
-      <Text className="font-roboto pb-2 px-1 text-sm">Total item amount</Text>
+      <Text className="font-robotomedium my-2 mx-1 text-lg">Total item amount</Text>
       <TextInput
         value={String(receiptItem.item_price)}
         onChangeText={(text) => handleChangeItemPrice(text)}
         keyboardType="numeric"
         inputType="decimal"
-        className="bg-gray border border-midgray rounded mb-2 mx-1 py-2 px-3"
+        placeholder="$0.00"
+        className="bg-gray border border-midgray rounded mb-2 mx-1 px-3 py-3 text-xl h-15"
       />
 
-      <Text className="font-roboto mt-1 mx-1 text-sm">Allocate portion(s)</Text>
-      <Text className="font-roboto mb-2 mx-1 text-xs">Select multiple names if shared by a few people</Text>
+      <Text className="font-robotomedium mt-1 mx-1 text-lg">Allocate portion(s)</Text>
+      <Text className="font-roboto mb-2 mx-1 text-base">Select multiple names if shared by a few people</Text>
       <View className="flex flex-row flex-wrap mb-3">
       {sharers.length === 0 && (
-        <Text className="font-roboto text-xs text-midgray ml-1 mb-1">No names added</Text>
+        <Text className="font-roboto text-lg text-midgray ml-1 mb-1">No names added</Text>
       )}
       {sharers.map((sharer, index) => {
         const isSelected = receiptItem.item_sharers?.includes(sharer);
@@ -154,7 +157,7 @@ export default function EditReceiptItemModal({
             backgroundColor: isSelected ? '#161A30' : '#F0ECE5',
           }}
         >
-          <Text style={{ color: isSelected ? '#F0ECE5' : '#161A30', textAlign: 'center' }}>
+          <Text className="text-lg" style={{ color: isSelected ? '#F0ECE5' : '#161A30', textAlign: 'center' }}>
             {sharer}
           </Text>
         </Pressable>
@@ -165,20 +168,20 @@ export default function EditReceiptItemModal({
 
       {isNew ? (
         <Pressable>
-        <Text disabled={!isComplete} onPress={handleAdd} className="font-robotocondensed py-1 px-3 mx-16 text-lg text-center bg-darknavy text-beige"
-        style={{ borderRadius: 15, overflow: 'hidden' }}>ADD</Text>
+        <Text disabled={!isComplete} onPress={handleAdd} className="font-robotocondensed py-1.5 px-3 mx-16 text-2xl text-center bg-darknavy text-beige"
+        style={{ borderRadius: 20, overflow: 'hidden' }}>ADD</Text>
         </Pressable>
       ) : (
         <View className="flex-row justify-center">
           <Pressable>
           <Text 
-          title="DELETE" onPress={handleDelete} className="font-robotocondensed py-1 px-10 m-1 text-lg text-center bg-red text-beige rounded-full" 
-          style={{ borderRadius: 15, overflow: 'hidden' }}>DELETE</Text>
+          title="DELETE" onPress={handleDelete} className="font-robotocondensed py-2 px-10 m-1 text-2xl text-center bg-red text-beige rounded-full" 
+          style={{ borderRadius: 20, overflow: 'hidden' }}>DELETE</Text>
           </Pressable>
         <Pressable>
           <Text 
-          disabled={!isComplete} onPress={handleEdit} className="font-robotocondensed py-1 px-12 m-1 text-lg text-center bg-darknavy text-beige rounded-full" 
-          style={{ borderRadius: 15, overflow: 'hidden' }}>SAVE</Text>
+          disabled={!isComplete} onPress={handleEdit} className="font-robotocondensed py-2 px-12 m-1 text-2xl text-center bg-darknavy text-beige" 
+          style={{ borderRadius: 20, overflow: 'hidden' }}>SAVE</Text>
           </Pressable>
           </View>
       )}

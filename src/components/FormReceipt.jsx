@@ -35,7 +35,7 @@ export default function FormReceipt() {
   return (
     <>
       <View className="flex flex-row ml-8">
-        <Text className="font-roboto text-xl text-darknavy">
+        <Text className="font-roboto text-2xl text-darknavy">
           Bill breakdown
         </Text>
         <Pressable
@@ -53,11 +53,11 @@ export default function FormReceipt() {
           onTouchOutside={() => setDialogVisible(false)}
         >
           <DialogContent className="bg-beige">
-            <Text className="font-robotomedium pt-7 pb-2 px-3 text-base">
-              Tap on individual item to edit/delete
+            <Text className="font-robotomedium pt-7 pb-5 px-3 text-xl">
+              Tap on individual bill item to edit/delete
             </Text>
             <Pressable onPress={() => setDialogVisible(false)}>
-              <Text className="font-robotocondensed py-2 px-3 mt-2 mx-14 text-base text-center bg-darknavy text-beige rounded-full">
+              <Text className="font-robotocondensed py-2 px-3 mt-2 mx-14 text-2xl text-center bg-darknavy text-beige" style={{ borderRadius: 20, overflow: 'hidden' }}>
                 CLOSE
               </Text>
             </Pressable>
@@ -65,7 +65,7 @@ export default function FormReceipt() {
         </Dialog>
         <View className="flex flex-1 items-end mr-8 justify-center">
           <Pressable onPress={() => setEditReceiptItemModalVisible(true)}>
-            <FontAwesomeIcon icon={faPlus} />
+            <FontAwesomeIcon icon={faPlus} size="20x" />
           </Pressable>
         </View>
       </View>
@@ -73,12 +73,12 @@ export default function FormReceipt() {
         {receipt && receipt.length > 0 ? (
           <>
             <View className="flex flex-row mt-2">
-              <Text className="font-robotomedium text-base text-darkgray pr-2">
+              <Text className="font-robotomedium text-lg text-darkgray pr-2">
                 Description
               </Text>
 
               <View className="flex flex-1 items-end mr-8">
-                <Text className="font-robotomedium text-base text-darkgray">
+                <Text className="font-robotomedium text-lg text-darkgray">
                   Amount
                 </Text>
               </View>
@@ -103,15 +103,15 @@ export default function FormReceipt() {
           ))}
         </View>
         <View className="flex flex-row justify-between items-center">
-        <Text className="font-robotomedium text-base text-darkgray mt-2">Grand Total</Text>
-        <Text className="font-robotomedium text-base text-darkgray mr-8">$100.00</Text>
+        <Text className="font-robotomedium text-lg text-darkgray mt-2">Grand Total</Text>
+        <Text className="font-robotomedium text-lg text-darkgray mr-8">$100.00</Text>
           {/* <TextInput className="bg-gray border border-midgray rounded py-2 px-2 w-20"/> */}
         </View>
             
           </>
         ) : (
           <Pressable onPress={() => setEditReceiptItemModalVisible(true)}>
-            <Text className="text-midgray">No details added</Text>
+            <Text className="text-midgray text-lg">No details added</Text>
           </Pressable>
         )}
       </View>

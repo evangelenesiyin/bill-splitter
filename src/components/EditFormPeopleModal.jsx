@@ -26,7 +26,7 @@ export default function EditPeopleModal({ dialogVisible, setDialogVisible }) {
 
   const [tags, setTags] = useState({
     tag: "",
-    tagsArray: [sharers],
+    tagsArray: [],
   });
 
   const updateTagState = (state) => {
@@ -56,16 +56,22 @@ export default function EditPeopleModal({ dialogVisible, setDialogVisible }) {
       onTouchOutside={() => setDialogVisible(false)}
     >
       <DialogContent className="bg-beige w-80">
-        <Pressable className="flex-row items-center justify-end mt-3" onPress={() => setDialogVisible(false)}>
-        <FontAwesomeIcon icon={faXmark} />
-        </Pressable>
-        <Text className="font-robotomedium mb-3 mx-2 text-base">
-          Separate each name with a space
+        <View className="flex-row items-center justify-between">
+        <Text className="font-robotomedium mt-6 mb-2 mx-2 text-xl">
+          Enter name(s)
         </Text>
+        <Pressable className="mt-3" onPress={() => setDialogVisible(false)}>
+        <FontAwesomeIcon icon={faXmark} size="20x" />
+        </Pressable>
+        </View>
+        <Text className="font-roboto mb-2 mx-2 text-lg">Separate each name with a comma</Text>
         <TagInput
           updateState={updateTagState}
           tags={tags}
           onChangeText={handleTagChange}
+          className="text-xl"
+          tagStyle={{ backgroundColor: 'white', height: 30 }}
+          tagTextStyle={{ fontSize: 18, color: 'black' }}
           style={{
             width: "100%",
             height: "auto",
@@ -75,10 +81,12 @@ export default function EditPeopleModal({ dialogVisible, setDialogVisible }) {
             borderColor: "gray",
             borderRadius: 8,
           }}
+          autoCorrect={false}
+          keysForTag={','}
         />
-        <Pressable onPress={handleSave} className="mt-5">
-          <Text className="font-robotocondensed py-1 px-3 mx-14 text-lg text-center bg-darknavy text-beige rounded-full"
-          style={{ borderRadius: 15, overflow: 'hidden' }}
+        <Pressable onPress={handleSave} className="mt-3">
+          <Text className="font-robotocondensed py-2 px-3 mx-14 text-2xl text-center bg-darknavy text-beige"
+          style={{ borderRadius: 20, overflow: 'hidden' }}
           >
             SAVE
           </Text>

@@ -1,4 +1,4 @@
-import { View, SafeAreaView, Button, Pressable } from "react-native";
+import { View, SafeAreaView, Pressable, Text } from "react-native";
 import Header from "../components/Header";
 import FormPeople from "../components/FormPeople";
 import FormReceipt from "../components/FormReceipt";
@@ -27,7 +27,7 @@ export default function FormScreen({ navigation }) {
       <View className="flex-row items-center justify-center">
         <Header />
       </View>
-      <SafeAreaView className="bg-gray h-full">
+      <SafeAreaView className="bg-gray h-full flex-1 mt-3">
         <Pressable onPress={()=> setEditFormPeopleModalVisible(true)}>
           <FormPeople />
         </Pressable>
@@ -35,7 +35,13 @@ export default function FormScreen({ navigation }) {
           <View className="w-10/12 h-px bg-midgray my-4"></View>
         </View>
         <FormReceipt />
-        <Button title="VIEW SUMMARY" onPress={handleSummaryPress} />
+
+        <View className="flex-1 mt-10">
+        <Pressable onPress={handleSummaryPress} className="border border-darknavy bg-darknavy py-3 px-2 mx-24 rounded-full">
+        <Text className="font-robotocondensed text-center text-2xl text-beige">VIEW SUMMARY</Text>
+        </Pressable>
+        </View>
+
       </SafeAreaView>
       <EditFormPeopleModal editFormPeopleModalVisible={editFormPeopleModalVisible} setEditFormPeopleModalVisible={setEditFormPeopleModalVisible} />
     </>

@@ -35,16 +35,16 @@ export default function FormReceiptItem({
   return (
     <Pressable onPress={handleReceiptItemPress}>
       <View className="flex flex-row mt-1">
-        <Text className="font-roboto text-base text-darkgray">
+        <Text className="font-roboto text-lg text-darkgray">
           {receiptItem.item_name}
         </Text>
         <View className="flex flex-1 items-end mr-8">
-          <Text className="font-roboto text-base text-darkgray">
+          <Text className="font-roboto text-lg text-darkgray">
             ${parseFloat(receiptItem.item_price).toFixed(2)}
           </Text>
         </View>
       </View>
-      <Text className="font-roboto text-base text-midgray mb-2">
+      <Text className="font-roboto text-lg text-midgray mb-2">
         {receiptItem.item_sharers.join(", ")}
       </Text>
     </Pressable>
